@@ -26,7 +26,8 @@ Clone and update Resources files automatically.
 This script only removes environment packages. Scoop, git, aria2 and sudo will be retained.
 
 If you want to uninstall Scoop,git,aria2 and sudo 
-[Uninstall Scoop](https://github.com/ScoopInstaller/Scoop/wiki/Uninstalling-Scoop)
+
+- [Uninstall Scoop](https://github.com/ScoopInstaller/Scoop/wiki/Uninstalling-Scoop)
 
 - Else:
 ```
