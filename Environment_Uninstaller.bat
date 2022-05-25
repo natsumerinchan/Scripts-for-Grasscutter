@@ -11,35 +11,35 @@ exit /B
 :gotAdmin
 if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
 
-echo 此举将删除服务器所有数据!!!!(有需要的请提前备份)
-echo 本脚本仅删除环境包，并未删除Scoop、git、aria2、sudo
+echo This will delete all data from the Grasscutter server !!!! (Please back up in advance if you need to.)
+echo This script only removes environment packages. Scoop, git, aria2, sudo are retained.
 
-set /p Choose1=是否继续卸载(Y/N):
-set /p Choose2=卸载完毕后是否立即重启系统(Y/N):
+set /p Choose1=Do you want to continue?(Y/N):
+set /p Choose2=Do you want to reboot your system immediately after the uninstallation is complete?(Y/N):
 if %Choose1% == Y (
-echo 正在开始卸载
+echo Uninstallation is starting now......
 goto NEXT1
 ) else (
-echo 已取消卸载
+echo Canceled Uninstallation.
 pause && exit
 )
 :NEXT1 && (
-echo 设置环境变量......
+echo Setting up environment variables......
 set path=C:\Users\jm1ts\scoop\shims;C:\ProgramData\scoop\shims;%path% ) && (
-echo 停止并删除MongoDB服务，终止java.exe ) & (
+echo Stop and remove MongoDB service and terminate java.exe ) & (
 taskkill /F /im java.exe ) & (
 net stop MongoDB ) & (
 mongod --remove ) & (
-echo 卸载环境包 ) & (
+echo Uninstall Environment Packages ) & (
 scoop uninstall oraclejdk mongodb mongodb-compass mitmproxy -p ) & (
 if %Choose2% == Y (
-echo 卸载完毕
-echo 你已经选择自动重启，若不想重启请在右上角直接关闭窗口（勿使用Ctrl + C或Ctrl + Z）
+echo Uninstallation completed.
+echo You have chosen to reboot automatically, if you do not want to reboot please close the window directly in the upper right corner (do not use Ctrl + C or Ctrl + Z).
 pause
 shutdown -r -t 0
 ) else (
-echo 卸载完毕
-echo 请自行重启系统
+echo Uninstallation completed.
+echo Please reboot the system yourself.
 pause
 )
 )
