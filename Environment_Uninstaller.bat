@@ -39,7 +39,7 @@ pause
 shutdown -r -t 0
 ) else (
 echo Uninstallation completed.
-echo Please reboot the system yourself.
+echo Please reboot the system by yourself.
 pause
 )
 )
