@@ -32,7 +32,7 @@ pause && %0
 )
 )
 :NEXT2 && (
-echo Installing environment package...... ) && (
+echo Installing environment packages...... ) && (
 scoop update ) && (
 scoop install oraclejdk@17.0.3.1 ) && (
 scoop install mongodb mongodb-compass mitmproxy ) && (
@@ -55,7 +55,7 @@ pause
 shutdown -r -t 0
 ) else (
 echo Installed successfully
-echo Please reboot the system yourself.
+echo Please reboot the system by yourself.
 pause
 )
 )
