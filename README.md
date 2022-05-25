@@ -41,7 +41,7 @@ Put Scripts into Grasscutter folder.
 Only run the server and turn on the proxy (without start the game).
 
 ### 2、proxy.bat
-Turn on the proxy.It will start automatically by Server_Start.bat.
+Turn on the proxy.It will be started automatically by Server_Start.bat.
 
 ### 3、Game_Start.bat
 Run the server and turn on the proxy (with start the game).
