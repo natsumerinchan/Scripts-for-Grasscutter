@@ -2,12 +2,12 @@
 :ifexist
 if exist ".\Grasscutter" (
   if exist ".\Grasscutter\grasscutter.jar" (
-  echo Deleting the original grasscutter.jar ......
-  del /q ".\Grasscutter\grasscutter.jar"
-  echo Deleted.
-  goto gitpull
+    echo Deleting the original grasscutter.jar ......
+    del /q ".\Grasscutter\grasscutter.jar"
+    echo Deleted.
+    goto gitpull
   ) else (
-  goto gitpull
+    goto gitpull
   )
 ) else (
   echo Cloning the development branch ......
