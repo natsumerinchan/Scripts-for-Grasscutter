@@ -3,7 +3,6 @@ set SERVER_JAR=.\grasscutter.jar
 set JAVA_HOME=%USERPROFILE%\scoop\apps\oraclejdk\current
 set JAVA_PATH=%JAVA_HOME%\bin
 set MITMPROXY_PATH=%USERPROFILE%\scoop\apps\mitmproxy\current
-set CA_CERT_FILE="%USERPROFILE%\.mitmproxy\mitmproxy-ca-cert.cer"
 
 @rem Check Java 
 %JAVA_PATH%\java.exe --version >nul
@@ -21,15 +20,14 @@ if not exist "%SERVER_JAR%" (
 )
 
 :PROXY
-if not exist ".\proxy.bat" (
-  echo [WARN] proxy.bat is not exist! && pause && exit
+if not exist ".\proxy_server.bat" (
+  echo [WARN] proxy_server.bat is not exist! && pause && exit
 ) else (
-  start .\proxy.bat
+  start .\proxy_server.bat
   goto Gserver
 )
 
 :Gserver
-certutil -addstore root %CA_CERT_FILE% >nul
 "%JAVA_PATH%\java.exe" -jar "%SERVER_JAR%"
 pause
 

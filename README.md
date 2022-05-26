@@ -38,12 +38,12 @@ scoop uninstall git aria2 sudo
 # Launch Scripts
 
 Put Scripts into Grasscutter folder.
-### 1、Server_Start.bat
-Only run the server and turn on the proxy (without start the game).
+### 1、Grasscutter_Start.bat
+Only run the Grasscutter server and proxy server (Game will not be started).
 
-### 2、proxy.bat
-Turn on the proxy.It will be started automatically by Server_Start.bat.
+### 2、proxy_server.bat
+Run proxy server.It will be started automatically by Grasscutter_Start.bat.
 
 ### 3、Game_Start.bat
-Run the server and turn on the proxy (with start the game).
+Run the Grasscutter server and proxy server,turn on the proxy settings and start the game automatically.
 You should create a shortcut of "Genshin Impact game\GenshinImpact.exe(or YuanShen.exe)",put in Grasscutter folder and rename it to "Genshin".
