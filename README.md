@@ -46,4 +46,4 @@ Turn on the proxy.It will be started automatically by Server_Start.bat.
 
 ### 3、Game_Start.bat
 Run the server and turn on the proxy (with start the game).
-You should create a shortcut of Genshin Impact game\GenshinImpact.exe(or YuanShen.exe) and rename it to "Genshin".
+You should create a shortcut of "Genshin Impact game\GenshinImpact.exe(or YuanShen.exe)",put in Grasscutter folder and rename it to "Genshin".
