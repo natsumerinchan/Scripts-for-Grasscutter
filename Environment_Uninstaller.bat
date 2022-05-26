@@ -11,37 +11,40 @@ exit /B
 :gotAdmin
 if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
 
-echo This will delete all data from the Grasscutter server !!!! (Please back up in advance if you need to.)
-echo This script only removes environment packages. Scoop, git, aria2, sudo are retained.
-
+echo [WARN] It will delete all data from the Grasscutter server !!!! (Please back up in advance if you need.)
+echo [INFO] This script only removes environment packages. Scoop, git, aria2 and sudo will be retained.
+set path=%USERPROFILE%\scoop\shims;C:\ProgramData\scoop\shims;%path%
 set /p Choose1=Do you want to continue?(Y/N):
-set /p Choose2=Do you want to reboot your system immediately after the uninstallation is complete?(Y/N):
+set /p Choose2=Do you want to reboot your system immediately after the uninstallation completed?(Y/N):
 if %Choose1% == Y (
-echo Uninstallation is starting now......
-goto NEXT1
+  echo [INFO] Uninstallation is starting now......
+  echo [INFO] Setting up environment variables......
+  echo [INFO] Stop and remove MongoDB service and terminate java.exe
+  taskkill /F /im java.exe
+  net stop MongoDB
+  mongod --remove
+  echo [INFO] Uninstall Environment Packages
+  scoop uninstall oraclejdk mongodb mongodb-compass mitmproxy -p
+  if %Choose2% == Y (
+    echo [INFO] Uninstallation completed.
+    echo [WARN] You have chosen to reboot automatically.  
+    echo [WARN] If you do not want to reboot,please close the window directly on the upper right corner.
+    echo [WARN] Do not use "Ctrl + C" or "Ctrl + Z"
+    pause
+    shutdown -r -t 0
+  ) else (
+    echo [INFO] Uninstallation completed.
+    echo [INFO] Please reboot by yourself.
+    pause
+  )
 ) else (
-echo Canceled Uninstallation.
-pause && exit
-)
-:NEXT1 && (
-echo Setting up environment variables......
-set path=C:\Users\jm1ts\scoop\shims;C:\ProgramData\scoop\shims;%path% ) && (
-echo Stop and remove MongoDB service and terminate java.exe ) & (
-taskkill /F /im java.exe ) & (
-net stop MongoDB ) & (
-mongod --remove ) & (
-echo Uninstall Environment Packages ) & (
-scoop uninstall oraclejdk mongodb mongodb-compass mitmproxy -p ) & (
-if %Choose2% == Y (
-echo Uninstallation completed.
-echo You have chosen to reboot automatically, if you do not want to reboot please close the window directly in the upper right corner (do not use Ctrl + C or Ctrl + Z).
-pause
-shutdown -r -t 0
-) else (
-echo Uninstallation completed.
-echo Please reboot the system by yourself.
-pause
-)
-)
+  echo [INFO] Canceled Uninstallation.
+  pause && exit
+) 
+
+
+
+
+
 
 
