@@ -5,23 +5,24 @@ set JAVA_PATH=%JAVA_HOME%\bin
 set MITMPROXY_PATH=%USERPROFILE%\scoop\apps\mitmproxy\current
 set CA_CERT_FILE="%USERPROFILE%\.mitmproxy\mitmproxy-ca-cert.cer"
 
+@rem Check Java 
 %JAVA_PATH%\java.exe --version >nul
 if %errorlevel% == 0 (
-  goto NEXT1
+  goto CHECKJAR
 ) else (
-  echo It seems that you have not installed Java! && pause && exit
+  echo [WARN] It seems that you have not installed Java! && pause && exit
 )
 
-:NEXT1
+:CHECKJAR
 if not exist "%SERVER_JAR%" ( 
-  echo "grasscutter.jar" is not exist! && pause && exit 
+  echo [WARN] "grasscutter.jar" is not exist! && pause && exit 
 ) else (
   goto PROXY
 )
 
 :PROXY
 if not exist ".\proxy.bat" (
-  echo proxy.bat is not exist! && pause && exit
+  echo [WARN] proxy.bat is not exist! && pause && exit
 ) else (
   start .\proxy.bat
   goto Gserver
