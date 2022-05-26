@@ -3,7 +3,7 @@
 Put scripts into Grasscutter's parent directory.
 ### 1、Environment_Installer.bat
 Install Grasscutter environment packages by Scoop.
-Package list:
+Packages list:
 - [Scoop](https://github.com/ScoopInstaller/Scoop)
 - git
 - sudo
@@ -33,6 +33,7 @@ If you want to uninstall Scoop,git,aria2 and sudo
 ```
 usage: scoop uninstall package_name
 scoop uninstall git aria2 sudo
+
 ```
 # Launch Scripts
 
