@@ -12,6 +12,7 @@ tasklist|find /i "mitmdump.exe" >nul
 if %errorlevel%==0 (
 choice /t 5 /d y /n >nul
 start .\Genshin.lnk 
+echo [INFO] Game is started!
 goto NEXT1
 ) else (
 goto LOOP1
@@ -32,7 +33,6 @@ if %errorlevel%==0 (
 choice /t 5 /d y /n >nul
 tasklist|find /i "%GAMEEXE%" >nul
 if %errorlevel%==0 (
-   echo [INFO] Game is Running!
    goto LOOP2
 ) else (
    echo [INFO] Game is exited!
@@ -41,8 +41,10 @@ if %errorlevel%==0 (
    reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /d "" /f >nul
    echo [INFO] Proxy settings is cleared!
    taskkill /F /im mitmdump.exe >nul
-   echo [INFO] Mitmdump is stoped!
-   pause 
+   echo [INFO] Proxy server is killed!
    taskkill /F /im "java.exe" >nul
+   echo [INFO] Grasscutter server is stoped!
+   echo Please press any key to stop the terminal windows......
+   pause >nul
    taskkill /F /im "WindowsTerminal.exe" >nul & taskkill /F /im "cmd.exe" >nul
 )
