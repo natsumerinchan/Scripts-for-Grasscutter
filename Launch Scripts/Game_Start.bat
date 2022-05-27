@@ -43,6 +43,6 @@ if %errorlevel%==0 (
    taskkill /F /im mitmdump.exe >nul
    echo [INFO] Mitmdump is stoped!
    pause 
-   taskkill /F /im "WindowsTerminal.exe" >nul
-   taskkill /F /im "cmd.exe" >nul
+   taskkill /F /im "java.exe" >nul
+   taskkill /F /im "WindowsTerminal.exe" >nul & taskkill /F /im "cmd.exe" >nul
 )
