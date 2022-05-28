@@ -3,7 +3,7 @@ echo [WARN] This script depends on Scoop, if it is not installed, it will instal
 echo [WARN] The script will prompt twice for administrator privilege, the first time for set up MongoDB as a Windows Service, and the second time for start the MongoDB Service.
 
 set path=%USERPROFILE%\scoop\shims;C:\ProgramData\scoop\shims;%path% 
-set /p Choose1=Do you want to continue?(Y/N):
+set /p Choose1=Would you like to continue?(Y/N):
 set /p Choose2=Do you want to reboot the system immediately after installation?(Y/N):
 
 if %Choose1% == Y (

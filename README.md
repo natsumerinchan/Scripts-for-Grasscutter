@@ -17,11 +17,15 @@ Packages list:
 Functions:
 - 1、Clone Grasscutter development branch
 - 2、Update files and build grasscutter.jar automatically.
+- 3、You can switch branches on line 8 "set BRANCH=" (Default value:development)
 
 ### 3、Grasscutter_Resources_Updater.bat
 Clone and update Resources files automatically.
 
-### 4、Environment_Uninstaller.bat
+### 4、Fix_MongoDB_Service.bat
+Fix MongoDB service after you have updated WINDOWS.
+
+### 5、Environment_Uninstaller.bat
 
 This script only removes environment packages. Scoop, git, aria2 and sudo will be retained.
 

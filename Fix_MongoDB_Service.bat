@@ -11,7 +11,7 @@ exit /B
 :gotAdmin
 if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
 
-echo [INFO] This script is for fixing the MongoDB Service when you have updated WINDOWS.
+echo [INFO] This script is for fixing the MongoDB Service after you have updated WINDOWS.
 set /p choose=Would you like to continue?(Y/N)
 if %choose% == Y (
     goto NEXT

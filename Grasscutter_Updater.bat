@@ -33,14 +33,13 @@ if not %CURRENT% == %BRANCH% (
   git checkout %BRANCH% >nul || git checkout -b %BRANCH% origin/%BRANCH% >nul
   git reset --hard HEAD
 )
-echo [INFO] Pulling updates from the %BRANCH% branch && (
-git pull origin %BRANCH%:%BRANCH%
-echo [INFO] Finished.
-echo [INFO] Buliding jar......
-gradlew.bat 
-gradlew jar
-move grasscutter-*-dev.jar ./grasscutter.jar 
-echo [INFO] Finished.
-pause 
-)
+echo [INFO] Pulling updates from the %BRANCH% branch && ^
+git pull origin %BRANCH%:%BRANCH% && ^
+echo [INFO] Finished. && ^
+echo [INFO] Buliding jar...... && ^
+gradlew.bat && ^
+gradlew jar && ^
+move ./grasscutter-*-dev.jar ./grasscutter.jar && ^
+echo [INFO] Finished. && ^
+pause
 

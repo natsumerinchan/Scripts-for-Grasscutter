@@ -14,7 +14,7 @@ if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
 echo [WARN] It will delete all data from the Grasscutter server !!!! (Please back up in advance if you need.)
 echo [INFO] This script only removes environment packages. Scoop, git, aria2 and sudo will be retained.
 set path=%USERPROFILE%\scoop\shims;C:\ProgramData\scoop\shims;%path%
-set /p Choose1=Do you want to continue?(Y/N):
+set /p Choose1=Would you like to continue?(Y/N):
 set /p Choose2=Do you want to reboot your system immediately after the uninstallation completed?(Y/N):
 if %Choose1% == Y (
   echo [INFO] Uninstallation is starting now......
@@ -23,7 +23,7 @@ if %Choose1% == Y (
   taskkill /F /im java.exe
   net stop MongoDB
   mongod --remove
-  echo [INFO] Uninstall Environment Packages
+  echo [INFO] Uninstalling Environment Packages......
   scoop uninstall oraclejdk mongodb mongodb-compass mitmproxy -p
   if %Choose2% == Y (
     echo [INFO] Uninstallation completed.
