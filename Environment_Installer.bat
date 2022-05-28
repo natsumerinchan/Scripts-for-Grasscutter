@@ -1,6 +1,18 @@
 @echo off
+if not exist "%USERPROFILE%\scoop\shims\scoop" ( goto gotAdmin )
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+if '%errorlevel%' NEQ '0' (
+goto UACPrompt
+) else ( goto gotAdmin )
+:UACPrompt
+echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
+"%temp%\getadmin.vbs"
+exit /B
+:gotAdmin
+if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
+
 echo [WARN] This script depends on Scoop, if it is not installed, it will install automatically and re-execute this script.
-echo [WARN] The script will prompt twice for administrator privilege, the first time for set up MongoDB as a Windows Service, and the second time for start the MongoDB Service.
 
 set path=%USERPROFILE%\scoop\shims;C:\ProgramData\scoop\shims;%path% 
 set /p Choose1=Would you like to continue?(Y/N):
@@ -31,8 +43,8 @@ if exist "%USERPROFILE%\scoop\shims\scoop" (
   if not exist "%MONGOPATH%\mongo.config" (
   echo dbpath=%MONGOPATH%\data\db>>"%MONGOPATH%\mongo.config"
   echo logpath=%MONGOPATH%\log\mongodb.log>>"%MONGOPATH%\mongo.config" ) 
-  sudo "%MONGOPATH%\bin\mongod.exe" --bind_ip 0.0.0.0 --logpath "%MONGOPATH%\log\mongodb.log" --logappend --dbpath "%MONGOPATH%\data\db" --serviceName "MongoDB" --serviceDisplayName "MongoDB" --install 
-  sudo net start MongoDB 
+  "%MONGOPATH%\bin\mongod.exe" --bind_ip 0.0.0.0 --logpath "%MONGOPATH%\log\mongodb.log" --logappend --dbpath "%MONGOPATH%\data\db" --serviceName "MongoDB" --serviceDisplayName "MongoDB" --install 
+  net start MongoDB 
   if %Choose2% == Y (
     echo [INFO] Installed successfully
     echo [WARN] You have chosen to reboot automatically.  
