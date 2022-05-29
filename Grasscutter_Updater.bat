@@ -5,6 +5,7 @@
 @rem development
 @rem dev-world-scripts
 
+cd /d %~dp0
 set BRANCH=development
 
 :ifexist
@@ -31,15 +32,17 @@ if not %CURRENT% == %BRANCH% (
   if exist ".\config.json" ( del /q ".\config.json" )
   if exist ".\data" ( rd /S /Q ".\data" )
   git checkout %BRANCH% >nul || git checkout -b %BRANCH% origin/%BRANCH% >nul
-  git reset --hard HEAD
-)
-echo [INFO] Pulling updates from the %BRANCH% branch && ^
-git pull origin %BRANCH%:%BRANCH% && ^
-echo [INFO] Finished. && ^
-echo [INFO] Buliding jar...... && ^
-gradlew.bat && ^
-gradlew jar && ^
-move ./grasscutter-*-dev.jar ./grasscutter.jar && ^
-echo [INFO] Finished. && ^
+) 
+(
+echo [INFO] Pulling updates from the %BRANCH% branch
+git reset --hard HEAD
+git pull origin %BRANCH%:%BRANCH% 
+echo [INFO] Finished. 
+echo [INFO] Buliding jar...... 
+gradlew.bat 
+gradlew jar 
+choice /t 5 /d y /n >nul 
+move ./grasscutter-*-dev.jar ./grasscutter.jar 
+echo [INFO] Finished. 
 pause
-
+)
