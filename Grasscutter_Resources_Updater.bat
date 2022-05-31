@@ -1,18 +1,23 @@
+@chcp 65001 >nul
 @echo off
 cd /d %~dp0
 
-@rem Check network
+@rem Check network(检查网络)
 set url=https://github.com/
 for /f %%z in ('curl -so /dev/null -w %%{http_code} %url%') do (
 set "NETWORK=%%z"
 )
 if %NETWORK% NEQ 200 (
-echo [ERROR] Unable to access https://github.com. && pause && exit
+echo [ERROR] Unable to access https://github.com.
+echo [ERROR] "无法连接到https://github.com。"
+pause && exit
 ) else (
-echo [INFO] https://github.com is connected. && goto ifexist
+echo [INFO] https://github.com is connected.
+echo [INFO] "已连接https://github.com。"
+goto ifexist
 )
 
-@rem Clone or update Resources
+@rem Clone or update Resources(克隆或拉取更新)
 :ifexist
 if exist ".\Grasscutter_Resources" (
   if exist ".\Grasscutter\Resources" (
@@ -22,6 +27,7 @@ if exist ".\Grasscutter_Resources" (
     choice /t 5 /d y /n >nul
     move .\Resources ..\Grasscutter\Resources
     echo [INFO] Update completed
+    echo [INFO] "更新完毕"
   ) else (
     if exist ".\Grasscutter_Resources\Resources" (
       cd .\Grasscutter_Resources
@@ -29,6 +35,7 @@ if exist ".\Grasscutter_Resources" (
       choice /t 5 /d y /n >nul
       move .\Resources ..\Grasscutter\Resources
       echo [INFO] Update completed
+      echo [INFO] "更新完毕"
     ) else (
       rd /S /Q ".\Grasscutter_Resources"
       git clone https://github.com/Koko-boya/Grasscutter_Resources.git
@@ -37,11 +44,13 @@ if exist ".\Grasscutter_Resources" (
       choice /t 5 /d y /n >nul
       move .\Resources ..\Grasscutter\Resources
       echo [INFO] Update completed
+      echo [INFO] "更新完毕"
     )
   )
 ) else (
   if exist ".\Grasscutter\Resources" (
     echo [INFO] Deleting the original Resources folder......
+    echo [INFO] "删除旧的Resources文件夹......"
     rd /S /Q .\Grasscutter\Resources
     echo [INFO] Finished.
   )
@@ -51,6 +60,7 @@ if exist ".\Grasscutter_Resources" (
   choice /t 5 /d y /n >nul
   move .\Resources ..\Grasscutter\Resources
   echo [INFO] Update completed
+  echo [INFO] "更新完毕"
 )
 pause
 

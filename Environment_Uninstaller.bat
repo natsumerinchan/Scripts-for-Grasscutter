@@ -1,3 +1,4 @@
+@chcp 65001 >nul
 @echo off
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 if '%errorlevel%' NEQ '0' (
@@ -11,34 +12,41 @@ exit /B
 :gotAdmin
 if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
 
-echo [WARN] It will delete all data from the Grasscutter server !!!! (Please back up in advance if you need.)
-echo [INFO] This script only removes environment packages. Scoop, git, aria2 and sudo will be retained.
+echo [WARN] [EN] It will delete all data from the server !!!! (Please back up in advance if you need.)
+echo [INFO] [EN] This script only removes environment packages. Scoop, git, aria2，curl and sudo will be retained.
+echo [WARN] [CN] 这将会把服务器所有的数据全部删除!!!!(有需要的请自行提前备份)
+echo [INFO] [CN] 此脚本只删除环境包. Scoop, git, aria2 , curl和sudo将会被保留
 set path=%USERPROFILE%\scoop\shims;C:\ProgramData\scoop\shims;%path%
-set /p Choose1=Would you like to continue?(Y/N):
-set /p Choose2=Do you want to reboot your system immediately after the uninstallation completed?(Y/N):
+set /p Choose1=Would you like to continue/是否要继续卸载?(Y/N):
+set /p Choose2=Do you want to reboot your system immediately after the uninstallation completed/卸载完毕后是否立即重启?(Y/N):
 if %Choose1% == Y (
-  echo [INFO] Uninstallation is starting now......
-  echo [INFO] Setting up environment variables......
-  echo [INFO] Stop and remove MongoDB service and terminate java.exe
+  echo [INFO] [EN] Uninstallation is starting now......
+  echo [INFO] [CN] 开始卸载......
+  echo [INFO] [EN] Stop and remove MongoDB service and terminate java.exe
+  echo [INFO] [CN] 关闭并移出MongoDB服务并终结java.exe
   taskkill /F /im java.exe
   net stop MongoDB
   mongod --remove
-  echo [INFO] Uninstalling Environment Packages......
+  echo [INFO] [EN] Uninstalling Environment Packages......
+  echo [INFO] [CN] 正在卸载环境包......
   scoop uninstall oraclejdk mongodb mongodb-compass mitmproxy -p
   if %Choose2% == Y (
-    echo [INFO] Uninstallation completed.
-    echo [WARN] You have chosen to reboot automatically.  
-    echo [WARN] If you do not want to reboot,please close the window directly on the upper right corner.
-    echo [WARN] Do not use "Ctrl + C" or "Ctrl + Z"
+    echo [INFO] Uninstallation completed/卸载完毕
+    echo [WARN] You have chosen to reboot automatically/你选择了自动重启系统
+    echo [WARN] [EN] If you do not want to reboot,please close the window directly on the upper right corner.
+    echo [WARN] [EN] Do not use "Ctrl + C" or "Ctrl + Z"
+    echo [WARN] [CN] 如果你现在不想重启系统，请直接在右上角关闭窗口。
+    echo [WARN] [CN] 勿使用 "Ctrl + C" or "Ctrl + Z"
     pause
     shutdown -r -t 0
   ) else (
-    echo [INFO] Uninstallation completed.
-    echo [INFO] Please reboot by yourself.
+    echo [INFO] Uninstallation completed/卸载完毕
+    echo [INFO] Please reboot by yourself/请自行重启系统
     pause
   )
 ) else (
-  echo [INFO] Canceled Uninstallation.
+  echo [INFO] [EN] Canceled Uninstallation.
+  echo [INFO] [CN] 已取消卸载。
   pause && exit
 ) 
 
