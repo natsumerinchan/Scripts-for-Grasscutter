@@ -12,18 +12,6 @@ exit /B
 :gotAdmin
 if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
 
-@rem Check network
-set url=https://github.com/
-for /f %%z in ('curl -so /dev/null -w %%{http_code} %url%') do (
-set "NETWORK=%%z"
-)
-if %NETWORK% NEQ 200 (
-echo [ERROR] Unable to access https://github.com. && pause && exit
-) else (
-echo [INFO] https://github.com is connected. && goto NEXT0
-)
-
-:NEXT0
 echo [WARN] This script depends on Scoop, if it is not installed, it will install automatically and re-execute this script.
 
 set path=%USERPROFILE%\scoop\shims;C:\ProgramData\scoop\shims;%path% 
