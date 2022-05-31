@@ -4,10 +4,21 @@
 @rem stable
 @rem development
 @rem dev-world-scripts
-
 cd /d %~dp0
 set BRANCH=development
 
+@rem Check network
+set url=https://github.com/
+for /f %%z in ('curl -so /dev/null -w %%{http_code} %url%') do (
+set "NETWORK=%%z"
+)
+if %NETWORK% NEQ 200 (
+echo [ERROR] Unable to access https://github.com. && pause && exit
+) else (
+echo [INFO] https://github.com is connected. && goto ifexist
+)
+
+@rem Clone or update Grasscutter
 :ifexist
 if exist ".\Grasscutter" (
   if exist ".\Grasscutter\grasscutter.jar" (
@@ -24,7 +35,7 @@ if exist ".\Grasscutter" (
   goto ifexist
 )
 :gitpull
-cd ./Grasscutter
+cd .\Grasscutter
 for /F "delims=" %%n in ('git branch --show-current') do set "CURRENT=%%n"
 echo [INFO] Current Branch: %CURRENT%
 if not %CURRENT% == %BRANCH% (
@@ -42,7 +53,7 @@ echo [INFO] Buliding jar......
 gradlew.bat 
 gradlew jar 
 choice /t 5 /d y /n >nul 
-move ./grasscutter-*-dev.jar ./grasscutter.jar 
+move .\grasscutter-*-dev.jar .\grasscutter.jar 
 echo [INFO] Finished. 
 pause
 )
