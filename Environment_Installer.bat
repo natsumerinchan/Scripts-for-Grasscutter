@@ -32,6 +32,7 @@ if exist "%USERPROFILE%\scoop\shims\scoop" (
   echo [INFO] Scoop is installed.
   echo [INFO] Installing environment packages...... 
   scoop update 
+  scoop install aria2 sudo curl
   scoop install oraclejdk@17.0.3.1 
   scoop install mongodb mongodb-compass mitmproxy 
   echo [INFO] Setting up mongodb...... 
