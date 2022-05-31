@@ -8,12 +8,12 @@ for /f %%z in ('curl -so /dev/null -w %%{http_code} %url%') do (
 set "NETWORK=%%z"
 )
 if %NETWORK% NEQ 200 (
-echo [ERROR] Unable to access https://github.com.
-echo [ERROR] "无法连接到https://github.com。"
+echo [ERROR] [EN] Unable to access https://github.com.
+echo [ERROR] [CN] 无法连接到https://github.com。
 pause && exit
 ) else (
-echo [INFO] https://github.com is connected.
-echo [INFO] "已连接https://github.com。"
+echo [INFO] [EN] https://github.com is connected.
+echo [INFO] [CN] 已连接https://github.com。
 goto ifexist
 )
 
@@ -26,16 +26,14 @@ if exist ".\Grasscutter_Resources" (
     git pull origin main
     choice /t 5 /d y /n >nul
     move .\Resources ..\Grasscutter\Resources
-    echo [INFO] Update completed
-    echo [INFO] "更新完毕"
+    echo [INFO] Update completed/更新完毕
   ) else (
     if exist ".\Grasscutter_Resources\Resources" (
       cd .\Grasscutter_Resources
       git pull origin main
       choice /t 5 /d y /n >nul
       move .\Resources ..\Grasscutter\Resources
-      echo [INFO] Update completed
-      echo [INFO] "更新完毕"
+      echo [INFO] Update completed/更新完毕
     ) else (
       rd /S /Q ".\Grasscutter_Resources"
       git clone https://github.com/Koko-boya/Grasscutter_Resources.git
@@ -43,24 +41,22 @@ if exist ".\Grasscutter_Resources" (
       git pull origin main
       choice /t 5 /d y /n >nul
       move .\Resources ..\Grasscutter\Resources
-      echo [INFO] Update completed
-      echo [INFO] "更新完毕"
+      echo [INFO] Update completed/更新完毕
     )
   )
 ) else (
   if exist ".\Grasscutter\Resources" (
-    echo [INFO] Deleting the original Resources folder......
-    echo [INFO] "删除旧的Resources文件夹......"
+    echo [INFO] [EN] Deleting the original Resources folder......
+    echo [INFO] [CN] 删除旧的Resources文件夹......
     rd /S /Q .\Grasscutter\Resources
-    echo [INFO] Finished.
+    echo [INFO] Finished/已完成
   )
   git clone https://github.com/Koko-boya/Grasscutter_Resources.git
   cd .\Grasscutter_Resources
   git pull origin main
   choice /t 5 /d y /n >nul
   move .\Resources ..\Grasscutter\Resources
-  echo [INFO] Update completed
-  echo [INFO] "更新完毕"
+  echo [INFO] Update completed/更新完毕
 )
 pause
 
