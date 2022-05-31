@@ -32,7 +32,7 @@ Fix MongoDB service after you have updated WINDOWS.（用于更新Windows系统�
 - This script only removes environment packages. Scoop, git, aria2 and sudo will be retained.
 - 此脚本只删除环境包. Scoop, git, aria2 , curl和sudo将会被保留
 
-If you want to uninstall Scoop,git,aria2 and sudo 
+If you want to uninstall another packages 
 
 - [Uninstall Scoop](https://github.com/ScoopInstaller/Scoop/wiki/Uninstalling-Scoop)
 
