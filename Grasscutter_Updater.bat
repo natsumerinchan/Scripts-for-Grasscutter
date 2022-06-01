@@ -59,7 +59,6 @@ echo [INFO] [CN] 从 %BRANCH% 分支拉取更新......
 git reset --hard HEAD
 git pull origin %BRANCH%:%BRANCH% 
 echo [INFO] Finished/已完成
-echo [INFO] Buliding jar/开始建构jar
 gradlew.bat 
 gradlew jar 
 choice /t 5 /d y /n >nul 
