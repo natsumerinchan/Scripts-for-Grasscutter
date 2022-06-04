@@ -34,8 +34,6 @@ Fix MongoDB service after you have updated WINDOWS.（用于更新Windows系统�
 
 If you want to uninstall another packages 
 
-- [Uninstall Scoop](https://github.com/ScoopInstaller/Scoop/wiki/Uninstalling-Scoop)
-
 - Else:
 ```
 usage: scoop uninstall package_name1 package_name2 package_name3 ......
@@ -43,6 +41,8 @@ usage: scoop uninstall package_name1 package_name2 package_name3 ......
 scoop uninstall git aria2 sudo
 
 ```
+- [Uninstall Scoop](https://github.com/ScoopInstaller/Scoop/wiki/Uninstalling-Scoop)
+
 # Launch Scripts
 
 Put Scripts into Grasscutter folder.
