@@ -1,7 +1,6 @@
 @chcp 65001 >nul
 @echo off
 cd /d %~dp0
-%MONGOPATH% NEQ "" || %setx MONGOPATH "%USERPROFILE%\scoop\apps\mongodb\current"
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 if '%errorlevel%' NEQ '0' (
 goto UACPrompt
