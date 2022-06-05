@@ -22,24 +22,18 @@ if exist ".\Grasscutter_Resources" (
     move .\Grasscutter\Resources .\Grasscutter_Resources\Resources
     cd .\Grasscutter_Resources
     git pull origin main
-    choice /t 5 /d y /n >nul
-    move .\Resources ..\Grasscutter\Resources
-    echo [INFO] Update completed.
+    goto MOVE
   ) else (
     if exist ".\Grasscutter_Resources\Resources" (
       cd .\Grasscutter_Resources
       git pull origin main
-      choice /t 5 /d y /n >nul
-      move .\Resources ..\Grasscutter\Resources
-      echo [INFO] Update completed.
+      goto MOVE
     ) else (
       rd /S /Q ".\Grasscutter_Resources"
       git clone https://github.com/Koko-boya/Grasscutter_Resources.git
       cd .\Grasscutter_Resources
       git pull origin main
-      choice /t 5 /d y /n >nul
-      move .\Resources ..\Grasscutter\Resources
-      echo [INFO] Update completed.
+      goto MOVE
     )
   )
 ) else (
@@ -52,9 +46,13 @@ if exist ".\Grasscutter_Resources" (
   git clone https://github.com/Koko-boya/Grasscutter_Resources.git
   cd .\Grasscutter_Resources
   git pull origin main
-  choice /t 5 /d y /n >nul
-  move .\Resources ..\Grasscutter\Resources
-  echo [INFO] Update completed.
+  goto MOVE
 )
+
+:MOVE
+choice /t 5 /d y /n >nul
+move .\Resources ..\Grasscutter\Resources
+if '%errorlevel%' NEQ '0' ( goto MOVE )
+echo [INFO] Update completed.
 pause
 
