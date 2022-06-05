@@ -50,7 +50,7 @@ if exist ".\Grasscutter_Resources" (
 )
 
 :MOVE
-choice /t 5 /d y /n >nul
+choice /t 1 /d y /n >nul
 move .\Resources ..\Grasscutter\Resources
 if '%errorlevel%' NEQ '0' ( goto MOVE )
 echo [INFO] Update completed.
