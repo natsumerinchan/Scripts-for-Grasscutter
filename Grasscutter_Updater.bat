@@ -8,6 +8,7 @@
 @rem dev-world-scripts
 cd /d %~dp0
 set BRANCH=development
+set GRADLE_OPTS=-Dfile.encoding=utf-8
 
 @rem Check network(检查网络)
 set url=https://github.com/
@@ -15,12 +16,10 @@ for /f %%z in ('curl -so /dev/null -w %%{http_code} %url%') do (
 set "NETWORK=%%z"
 )
 if %NETWORK% NEQ 200 (
-echo [ERROR] [EN] Unable to access https://github.com.
-echo [ERROR] [CN] 无法连接到https://github.com。
+echo [ERROR] Unable to access https://github.com.
 pause && exit
 ) else (
-echo [INFO] [EN] https://github.com is connected.
-echo [INFO] [CN] 已连接https://github.com。
+echo [INFO] https://github.com is connected.
 goto ifexist
 )
 
@@ -31,7 +30,7 @@ if exist ".\Grasscutter" (
     echo [INFO] [EN] Deleting the original grasscutter.jar......
     echo [INFO] [CN] 正在删除原来的grasscutter.jar......
     del /q ".\Grasscutter\grasscutter.jar"
-    echo [INFO] Deleted/已删除
+    echo [INFO] Deleted.
     goto gitpull
   ) else (
     goto gitpull
@@ -58,11 +57,11 @@ echo [INFO] [EN] Pulling updates from the %BRANCH% branch......
 echo [INFO] [CN] 从 %BRANCH% 分支拉取更新......
 git reset --hard HEAD
 git pull origin %BRANCH%:%BRANCH% 
-echo [INFO] Finished/已完成
+echo [INFO] Finished.
 gradlew.bat 
 gradlew jar 
 choice /t 5 /d y /n >nul 
 move .\grasscutter-*-dev.jar .\grasscutter.jar 
-echo [INFO] Finished/已完成 
+echo [INFO] Finished.
 pause
 )

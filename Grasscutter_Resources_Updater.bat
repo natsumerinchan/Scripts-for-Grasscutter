@@ -8,12 +8,10 @@ for /f %%z in ('curl -so /dev/null -w %%{http_code} %url%') do (
 set "NETWORK=%%z"
 )
 if %NETWORK% NEQ 200 (
-echo [ERROR] [EN] Unable to access https://github.com.
-echo [ERROR] [CN] 无法连接到https://github.com。
+echo [ERROR] Unable to access https://github.com.
 pause && exit
 ) else (
-echo [INFO] [EN] https://github.com is connected.
-echo [INFO] [CN] 已连接https://github.com。
+echo [INFO] https://github.com is connected.
 goto ifexist
 )
 
@@ -26,14 +24,14 @@ if exist ".\Grasscutter_Resources" (
     git pull origin main
     choice /t 5 /d y /n >nul
     move .\Resources ..\Grasscutter\Resources
-    echo [INFO] Update completed/更新完毕
+    echo [INFO] Update completed.
   ) else (
     if exist ".\Grasscutter_Resources\Resources" (
       cd .\Grasscutter_Resources
       git pull origin main
       choice /t 5 /d y /n >nul
       move .\Resources ..\Grasscutter\Resources
-      echo [INFO] Update completed/更新完毕
+      echo [INFO] Update completed.
     ) else (
       rd /S /Q ".\Grasscutter_Resources"
       git clone https://github.com/Koko-boya/Grasscutter_Resources.git
@@ -41,7 +39,7 @@ if exist ".\Grasscutter_Resources" (
       git pull origin main
       choice /t 5 /d y /n >nul
       move .\Resources ..\Grasscutter\Resources
-      echo [INFO] Update completed/更新完毕
+      echo [INFO] Update completed.
     )
   )
 ) else (
@@ -49,14 +47,14 @@ if exist ".\Grasscutter_Resources" (
     echo [INFO] [EN] Deleting the original Resources folder......
     echo [INFO] [CN] 删除旧的Resources文件夹......
     rd /S /Q .\Grasscutter\Resources
-    echo [INFO] Finished/已完成
+    echo [INFO] Finished.
   )
   git clone https://github.com/Koko-boya/Grasscutter_Resources.git
   cd .\Grasscutter_Resources
   git pull origin main
   choice /t 5 /d y /n >nul
   move .\Resources ..\Grasscutter\Resources
-  echo [INFO] Update completed/更新完毕
+  echo [INFO] Update completed.
 )
 pause
 
