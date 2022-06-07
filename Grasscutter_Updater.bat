@@ -61,7 +61,7 @@ echo [INFO] Finished.
 gradlew.bat 
 gradlew jar 
 choice /t 5 /d y /n >nul 
-move .\grasscutter-*-dev.jar .\lib\grasscutter.jar 
+move .\grasscutter*.jar .\lib\grasscutter.jar 
 echo [INFO] Finished.
 pause
 )
