@@ -51,11 +51,11 @@ if not %CURRENT% == %BRANCH% (
   if exist ".\config.json" ( del /q ".\config.json" )
   if exist ".\data" ( rd /S /Q ".\data" )
   git checkout %BRANCH% >nul || git checkout -b %BRANCH% origin/%BRANCH% >nul
+  git reset --hard HEAD
 ) 
 (
 echo [INFO] [EN] Pulling updates from the %BRANCH% branch......
 echo [INFO] [CN] 从 %BRANCH% 分支拉取更新......
-git reset --hard HEAD
 git pull origin %BRANCH%:%BRANCH% 
 echo [INFO] Finished.
 gradlew.bat 
