@@ -26,10 +26,10 @@ goto ifexist
 @rem Clone or update Grasscutter(克隆或拉取更新)
 :ifexist
 if exist ".\Grasscutter" (
-  if exist ".\Grasscutter\grasscutter.jar" (
+  if exist ".\Grasscutter\lib\grasscutter.jar" (
     echo [INFO] [EN] Deleting the original grasscutter.jar......
     echo [INFO] [CN] 正在删除原来的grasscutter.jar......
-    del /q ".\Grasscutter\grasscutter.jar"
+    del /q ".\Grasscutter\lib\grasscutter.jar"
     echo [INFO] Deleted.
     goto gitpull
   ) else (
@@ -61,7 +61,7 @@ echo [INFO] Finished.
 gradlew.bat 
 gradlew jar 
 choice /t 5 /d y /n >nul 
-move .\grasscutter-*-dev.jar .\grasscutter.jar 
+move .\grasscutter-*-dev.jar .\lib\grasscutter.jar 
 echo [INFO] Finished.
 pause
 )
