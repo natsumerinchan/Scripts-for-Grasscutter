@@ -17,22 +17,22 @@ goto ifexist
 
 @rem Clone or update Resources(克隆或拉取更新)
 :ifexist
-if exist ".\Grasscutter_Resources" (
+if exist ".\.Grasscutter_Resources" (
   if exist ".\Grasscutter\Resources" (
-    move .\Grasscutter\Resources .\Grasscutter_Resources\Resources
-    cd .\Grasscutter_Resources
+    move .\Grasscutter\Resources .\.Grasscutter_Resources\Resources
+    cd .\.Grasscutter_Resources
     git pull origin main
     goto MOVE
   ) else (
-    if exist ".\Grasscutter_Resources\Resources" (
-      cd .\Grasscutter_Resources
+    if exist ".\.Grasscutter_Resources\Resources" (
+      cd .\.Grasscutter_Resources
       git pull origin main
       goto MOVE
     ) else (
-      rd /S /Q ".\Grasscutter_Resources"
-      git clone https://github.com/Koko-boya/Grasscutter_Resources.git
-      attrib +h .\Grasscutter_Resources /d
-      cd .\Grasscutter_Resources
+      rd /S /Q ".\.Grasscutter_Resources"
+      git clone https://github.com/Koko-boya/Grasscutter_Resources.git .Grasscutter_Resources
+      attrib +h .\.Grasscutter_Resources /d
+      cd .\.Grasscutter_Resources
       git pull origin main
       goto MOVE
     )
@@ -44,9 +44,9 @@ if exist ".\Grasscutter_Resources" (
     rd /S /Q .\Grasscutter\Resources
     echo [INFO] Finished.
   )
-  git clone https://github.com/Koko-boya/Grasscutter_Resources.git
-  attrib +h .\Grasscutter_Resources /d
-  cd .\Grasscutter_Resources
+  git clone https://github.com/Koko-boya/Grasscutter_Resources.git .Grasscutter_Resources
+  attrib +h .\.Grasscutter_Resources /d
+  cd .\.Grasscutter_Resources
   git pull origin main
   goto MOVE
 )

@@ -4,8 +4,8 @@
 @rem 如果你想更换分支为dev-world-scripts，请将"set BRANCH=development"改为"set BRANCH=dev-world-scripts"
 @rem Branches List(分支列表):
 @rem stable
-@rem development
-@rem dev-world-scripts
+@rem development 
+@rem 2.6
 cd /d %~dp0
 set BRANCH=development
 set GRADLE_OPTS=-Dfile.encoding=utf-8
