@@ -31,6 +31,7 @@ if exist ".\Grasscutter_Resources" (
     ) else (
       rd /S /Q ".\Grasscutter_Resources"
       git clone https://github.com/Koko-boya/Grasscutter_Resources.git
+      attrib +h .\Grasscutter_Resources /d
       cd .\Grasscutter_Resources
       git pull origin main
       goto MOVE
@@ -44,6 +45,7 @@ if exist ".\Grasscutter_Resources" (
     echo [INFO] Finished.
   )
   git clone https://github.com/Koko-boya/Grasscutter_Resources.git
+  attrib +h .\Grasscutter_Resources /d
   cd .\Grasscutter_Resources
   git pull origin main
   goto MOVE
