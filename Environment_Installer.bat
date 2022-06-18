@@ -24,7 +24,7 @@ if exist "%USERPROFILE%\scoop\shims\scoop" (
   echo [INFO] Installing environment packages/正在安装环境包
   scoop update 
   scoop install aria2 sudo curl
-  scoop install oraclejdk@17.0.3.1 
+  scoop install openjdk17
   scoop install mongodb mongodb-compass mitmproxy 
   setx MONGOPATH "%USERPROFILE%\scoop\apps\mongodb\current"
   start .\Fix_MongoDB_Service.bat

@@ -2,7 +2,7 @@
 @echo off
 cd /d %~dp0
 set SERVER_JAR=.\lib\grasscutter.jar
-set JAVA_HOME=%USERPROFILE%\scoop\apps\oraclejdk\current
+set JAVA_HOME=%USERPROFILE%\scoop\apps\openjdk17\current
 set JAVA_PATH=%JAVA_HOME%\bin
 set MITMPROXY_PATH=%USERPROFILE%\scoop\apps\mitmproxy\current
 

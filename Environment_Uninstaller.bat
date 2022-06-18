@@ -30,7 +30,7 @@ if %Choose1% == Y (
   powershell "[Environment]::SetEnvironmentVariable('MONGOPATH', $null, 'User')"
   echo [INFO] [EN] Uninstalling Environment Packages......
   echo [INFO] [CN] 正在卸载环境包......
-  scoop uninstall oraclejdk mongodb mongodb-compass mitmproxy -p
+  scoop uninstall openjdk17 mongodb mongodb-compass mitmproxy -p
   if %Choose2% == Y (
     echo [INFO] Uninstallation completed/卸载完毕
     echo [WARN] You have chosen to reboot automatically/你选择了自动重启系统
