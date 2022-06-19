@@ -10,7 +10,7 @@ Packages list:
 - git
 - sudo
 - aria2
-- oraclejdk@17.0.3.1
+- openjdk17
 - mongodb
 - mongodb-compass
 - mitmproxy
