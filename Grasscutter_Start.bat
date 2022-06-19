@@ -1,6 +1,7 @@
 @chcp 65001 >nul
 @echo off
 cd /d %~dp0
+cd .\Grasscutter
 set SERVER_JAR=.\lib\grasscutter.jar
 set JAVA_HOME=%USERPROFILE%\scoop\apps\openjdk17\current
 set JAVA_PATH=%JAVA_HOME%\bin
@@ -35,12 +36,12 @@ if not exist "Resources" (
 )
 
 :PROXY
-if not exist ".\proxy_server.bat" (
+if not exist "..\proxy_server.bat" (
   echo [WARN] [EN] proxy_server.bat is not exist!
   echo [WARN] [CN] proxy_server.bat不存在!
   goto Gserver
 ) else (
-  start .\proxy_server.bat
+  start ..\proxy_server.bat
   goto Gserver
 )
 
