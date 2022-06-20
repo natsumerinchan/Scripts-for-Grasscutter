@@ -6,11 +6,13 @@
 @rem stable
 @rem development 
 @rem 2.6
+title Grasscutter Updater
 cd /d %~dp0
 set BRANCH=development
 set GRADLE_OPTS=-Dfile.encoding=utf-8
 set JAVA_HOME=%USERPROFILE%\scoop\apps\openjdk17\current
 
+echo [INFO] Updater Grasscutter
 @rem Check network(检查网络)
 set url=https://github.com/
 for /f %%z in ('curl -so /dev/null -w %%{http_code} %url%') do (
@@ -64,5 +66,6 @@ gradlew jar
 choice /t 5 /d y /n >nul 
 move .\grasscutter*.jar .\lib\grasscutter.jar 
 echo [INFO] Finished.
-pause
+cd ..\
+call Resources_Updater.bat
 )
