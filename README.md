@@ -19,8 +19,8 @@ Functions:
 - 2、Update files and build grasscutter.jar
 - 3、You can switch branches on "set BRANCH=" (Default value:development)
 
-### 3、Grasscutter_Resources_Updater.bat
-Clone and update Resources files
+### 3、Resources_Updater.bat
+Clone and update Resources files.(It will run by Grasscutter_Updater.bat)
 
 ### 4、Fix_MongoDB_Service.bat
 Fix MongoDB service after you have updated WINDOWS.
