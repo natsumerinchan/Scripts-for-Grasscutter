@@ -20,7 +20,7 @@
 - 3、你可以修改 "set BRANCH="（默认值：development）切换分支。
 
 ### 3、Resources_Updater.bat
-克隆和更新资源文件(它会被Grasscutter_Updater.bat运行)
+克隆和更新资源文件(它会被Grasscutter_Updater.bat运行。你不需要单独运行此脚本，除非你只想更新resources。)
 
 ### 4、Fix_MongoDB_Service.bat
 在更新WINDOWS后修复MongoDB服务。(安装环境包时会调用它启动MongoDB服务)

@@ -6,6 +6,13 @@
 @rem stable
 @rem development 
 @rem 2.6
+echo ##########################################################################
+echo ..........................................................................
+echo                         Grasscutter Updater
+echo                    Author:natsumerinchan@Github
+echo ..........................................................................
+echo ##########################################################################
+
 title Grasscutter Updater
 cd /d %~dp0
 set BRANCH=development
@@ -63,7 +70,7 @@ git pull origin %BRANCH%:%BRANCH%
 echo [INFO] Finished.
 gradlew.bat 
 gradlew jar 
-choice /t 5 /d y /n >nul 
+choice /t 2 /d y /n >nul 
 move .\grasscutter*.jar .\lib\grasscutter.jar 
 echo [INFO] Finished.
 cd ..\

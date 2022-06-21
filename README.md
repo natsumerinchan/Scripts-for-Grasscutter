@@ -20,7 +20,7 @@ Functions:
 - 3、You can switch branches on "set BRANCH=" (Default value:development)
 
 ### 3、Resources_Updater.bat
-Clone and update Resources files.(It will run by Grasscutter_Updater.bat)
+Clone and update Resources files.(It will run by Grasscutter_Updater.bat. You don't need to run Resources_Updater.bat separately, unless you just want to upgrade resources.)
 
 ### 4、Fix_MongoDB_Service.bat
 Fix MongoDB service after you have updated WINDOWS.

@@ -3,6 +3,13 @@
 title Resources Updater
 cd /d %~dp0
 
+echo ##########################################################################
+echo ..........................................................................
+echo                    Grasscutter Resources Updater
+echo                    Author:natsumerinchan@Github
+echo ..........................................................................
+echo ##########################################################################
+
 echo [INFO] Update Resources
 @rem Check network(检查网络)
 set url=https://github.com/
