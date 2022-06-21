@@ -37,10 +37,10 @@ goto ifexist
 :ifexist
 if exist ".\Grasscutter" (
   if exist ".\Grasscutter\lib\grasscutter.jar" (
-    echo [INFO] [EN] Deleting the original grasscutter.jar......
-    echo [INFO] [CN] 正在删除原来的grasscutter.jar......
-    del /q ".\Grasscutter\lib\grasscutter.jar"
-    echo [INFO] Deleted.
+    echo [INFO] [EN] Backup the original grasscutter.jar......
+    echo [INFO] [CN] 正在备份原来的grasscutter.jar......
+    move ".\Grasscutter\lib\grasscutter.jar" ".\Grasscutter\lib\grasscutter.jar.bak"
+    echo [INFO] Done.
     goto gitpull
   ) else (
     goto gitpull
