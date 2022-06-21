@@ -1,6 +1,6 @@
 # Scripts-for-Grasscutter
 
-[**简体中文**](README_zh-CN.md) | [**English**]
+[**简体中文**](README_zh-CN.md) || **English**
 ### 1、Environment_Installer.bat
 Install Grasscutter environment packages by Scoop.
 Packages list:
