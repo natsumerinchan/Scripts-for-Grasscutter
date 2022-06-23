@@ -29,6 +29,7 @@ goto ifexist
 if exist ".\.Grasscutter_Resources" (
   if exist ".\Grasscutter\Resources" (
     move .\Grasscutter\Resources .\.Grasscutter_Resources\Resources
+    if '%errorlevel%' NEQ '0' ( goto ifexist )
     cd .\.Grasscutter_Resources
     git pull origin main
     goto MOVE
