@@ -1,23 +1,25 @@
 @chcp 65001 >nul
 @echo off
-@rem If you wnat to change to dev-world-scripts branch,please change "set BRANCH=development" to "set BRANCH=dev-world-scripts".
-@rem 如果你想更换分支为dev-world-scripts，请将"set BRANCH=development"改为"set BRANCH=dev-world-scripts"
+@rem If you wnat to change to 2.7 branch,please change "set BRANCH=development" to "set BRANCH=2.7".
+@rem 如果你想更换分支为2.7，请将"set BRANCH=development"改为"set BRANCH=2.7"
 @rem Branches List(分支列表):
 @rem stable
 @rem development 
 @rem 2.6
-echo ##########################################################################
-echo ..........................................................................
-echo                         Grasscutter Updater
-echo                    Author:natsumerinchan@Github
-echo ..........................................................................
-echo ##########################################################################
+@rem 2.7
 
 title Grasscutter Updater
 cd /d %~dp0
 set BRANCH=development
 set GRADLE_OPTS=-Dfile.encoding=utf-8
 set JAVA_HOME=%USERPROFILE%\scoop\apps\openjdk17\current
+
+echo ##########################################################################
+echo ..........................................................................
+echo                         Grasscutter Updater
+echo                    Author:natsumerinchan@Github
+echo ..........................................................................
+echo ##########################################################################
 
 echo [INFO] Update Grasscutter
 @rem Check network(检查网络)
